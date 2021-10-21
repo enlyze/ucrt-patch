@@ -244,6 +244,7 @@ static void __cdecl common_end_thread(unsigned int const return_code) throw()
     __acrt_thread_parameter* const parameter = ptd->_beginthread_context;
     if (!parameter)
     {
+        __acrt_freeptd();
         ExitThread(return_code);
     }
 
@@ -257,9 +258,12 @@ static void __cdecl common_end_thread(unsigned int const return_code) throw()
         CloseHandle(parameter->_thread_handle);
     }
 
-    if (parameter->_module_handle != INVALID_HANDLE_VALUE && parameter->_module_handle != nullptr)
+    HMODULE module_handle = parameter->_module_handle;
+	__acrt_freeptd();
+
+    if (module_handle != INVALID_HANDLE_VALUE && module_handle != nullptr)
     {
-        FreeLibraryAndExitThread(parameter->_module_handle, return_code);
+        FreeLibraryAndExitThread(module_handle, return_code);
     }
     else
     {
