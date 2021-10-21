@@ -1,0 +1,13 @@
+---
+kind: pipeline
+name: build-windows
+
+platform:
+  os: windows
+  version: 1909
+
+steps:
+- name: build
+  image: docker.enlyze.com/enlyze/windows-gateways-build-environment
+  commands:
+  - .\drone_build.ps1
