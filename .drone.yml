@@ -11,3 +11,18 @@ steps:
   image: docker.enlyze.com/enlyze/windows-gateways-build-environment
   commands:
   - .\drone_build.ps1
+
+- name: deploy
+  image: docker.enlyze.com/enlyze/windows-gateways-build-environment
+  environment:
+    GH_USERNAME:
+      from_secret: gh_username
+    GH_TOKEN:
+      from_secret: gh_token
+  commands:
+  - .\drone_deploy.ps1
+  when:
+    branch:
+    - master
+    event:
+    - push
