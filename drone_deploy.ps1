@@ -5,5 +5,6 @@ git config --local user.email "ci@enlyze.com"
 git clone https://github.com/enlyze/ucrt-patched
 cd ucrt-patched
 copy ..\libucrt-patched.lib
-git commit -a -m "$Env:DRONE_COMMIT_MESSAGE"
+git add libucrt-patched.lib
+git commit -m "$Env:DRONE_COMMIT_MESSAGE"
 git push
