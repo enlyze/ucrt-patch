@@ -11,7 +11,7 @@ set INCLUDE=
 set LIB=
 
 :: Build thread.obj
-cl /c /I glue /I "C:\Program Files (x86)\Windows Kits\10\Include\10.0.20348.0\ucrt" /I "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\shared" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\um" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\winrt" ucrt\startup\thread.cpp
+cl /c /I glue /I "%VSINSTALLDIR%\VC\Tools\MSVC\14.29.30133\include" /I "C:\Program Files (x86)\Windows Kits\10\Include\10.0.20348.0\ucrt" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\shared" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\um" /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\winrt" ucrt\startup\thread.cpp
 
 :: Patch libucrt.lib
 copy "C:\Program Files (x86)\Windows Kits\10\Lib\10.0.20348.0\ucrt\x86\libucrt.lib"
