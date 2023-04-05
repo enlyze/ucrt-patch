@@ -1,3 +1,17 @@
+kind: pipeline
+
+steps:
+- name: test
+  image: alpine
+  environment:
+    GH_USERNAME:
+      from_secret: gh_username
+    GH_TOKEN:
+      from_secret: gh_token
+  commands:
+    - env
+
+
 ---
 kind: pipeline
 name: build-windows
